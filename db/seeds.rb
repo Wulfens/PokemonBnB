@@ -36,13 +36,11 @@ i = 0
 e = ""
 html_doc.search("tr").each do |element|
   next if element.children[1].name == "th"
-  next if e == element.children[1].text
 
-  e = element.children[1].text
-  pokemon = Pokemon.new(
-    name: element.children[5].children.first.text,
-    price_per_day: rand(50)
-  )
+  name = element.children[5].children.first.text
+  next if name.match?(/\bméga/i) || name.match?(/alola\b/i)
+
+  pokemon = Pokemon.new( name: name, price_per_day: rand(50))
   types = []
   element.search('span').each do |e|
     types << e.attributes.values.first.value if all_types.include?(e.attributes.values.first.value)
