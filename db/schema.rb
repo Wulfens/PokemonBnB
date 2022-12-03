@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_30_102905) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_03_214721) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -28,11 +28,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_30_102905) do
 
   create_table "pokemons", force: :cascade do |t|
     t.string "name"
-    t.string "type"
+    t.string "types", default: [], array: true
     t.float "price_per_day"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "poster_url"
     t.index ["user_id"], name: "index_pokemons_on_user_id"
   end
 
