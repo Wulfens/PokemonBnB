@@ -50,17 +50,16 @@ html_doc.search("tr").each do |element|
   poster_file = URI.open(url_poster).read
   poster_doc = Nokogiri::HTML(poster_file)
 
-  photo = poster_doc.search('.artwork_off > img').each do |i|
-    i.attributes.values.first.value
+  poster_doc.search('.artwork_off > img').each do |i|
+    pokemon.poster_url = "https://eternia.fr#{i.attributes.values.first.value}"
   end
 
   pokemon.types = types
-  pokemon.poster_url = "https://eternia.fr#{photo}"
   pokemon.user = User.all.sample
 
   pokemon.save!
   puts "#{pokemon.name} has been created !"
   e = element.children[1].text
   i += 1
-  break if i == 50
+  break if i == 151
 end
