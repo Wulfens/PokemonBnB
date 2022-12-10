@@ -13,6 +13,12 @@ class PokemonsController < ApplicationController
   end
 
   def create
+    @pokemon.new(pokemon_params)
+  end
 
+  private
+
+  def pokemon_params
+    params.require(:pokemon).permit(:name, :price_per_day, :types)
   end
 end

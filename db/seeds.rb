@@ -40,7 +40,7 @@ html_doc.search("tr").each do |element|
   name = element.children[5].children.first.text
   next if name.match?(/\bméga/i) || name.match?(/alola\b/i)
 
-  pokemon = Pokemon.new( name: name, price_per_day: rand(50))
+  pokemon = Pokemon.new(name: name, price_per_day: rand(50))
   types = []
   element.search('span').each do |e|
     types << e.attributes.values.first.value if all_types.include?(e.attributes.values.first.value)
