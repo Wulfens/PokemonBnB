@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   resources :pokemons do
-    resources :bookings, only: :create
+    resources :bookings, only: [:new, :create]
   end
 
   resources :bookings, only: :destroy
