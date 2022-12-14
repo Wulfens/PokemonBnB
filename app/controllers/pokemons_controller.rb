@@ -1,5 +1,4 @@
 class PokemonsController < ApplicationController
-
   def index
     @pokemons = Pokemon.all
   end
@@ -14,12 +13,18 @@ class PokemonsController < ApplicationController
   end
 
   def create
-    @pokemon.new(pokemon_params)
+    @pokemon = Pokemon.new(pokemon_params)
+    @pokemon.user = current_user
+    if @pokemon.save
+      redirect_to pokemon_path(@pokemon)
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   private
 
   def pokemon_params
-    params.require(:pokemon).permit(:name, :price_per_day, :types)
+    params.require(:pokemon).permit(:name, :price_per_day, :poster_url, types: [])
   end
 end
