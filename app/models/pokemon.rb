@@ -12,6 +12,6 @@ class Pokemon < ApplicationRecord
   private
 
   def shift_types
-    types.shift
+    types.first == "" ? types.shift : types
   end
 end
