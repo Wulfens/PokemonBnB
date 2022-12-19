@@ -6,3 +6,7 @@
 
 
 <%= link_to "Back", pokemons_path %>
+
+<%= link_to "Update", edit_pokemon_path(@pokemon) %>
+
+<%= link_to "Destroy", pokemon_path(@pokemon), data: { turbo_method: :delete } %>
