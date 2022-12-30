@@ -7,4 +7,11 @@ class Booking < ApplicationRecord
   scope :declined, -> { where(status: "declined") }
   scope :canceled, -> { where(status: "canceled") }
 
+  before_validation :set_status
+
+  private
+
+  def set_status
+    self.status = "pending"
+  end
 end
