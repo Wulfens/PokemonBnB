@@ -9,7 +9,7 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to pokemons_path
     else
-      render "/pokemons/#{@pokemon.id}", status: :unprocessable_entity
+      render "pokemons/show", status: :unprocessable_entity
     end
   end
 
