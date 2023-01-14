@@ -20,18 +20,20 @@ class PokemonsController < ApplicationController
     authorize @pokemon
     if @pokemon.save
       redirect_to pokemon_path(@pokemon)
+    else
+      render :new
     end
   end
 
   def edit
-   authorize @pokemon
+    authorize @pokemon
   end
 
   def update
     authorize @pokemon
     if @pokemon.update(pokemon_params)
       redirect_to pokemon_path(@pokemon)
-    else  
+    else
       render :new, status: :unprocessable_entity
     end
   end

@@ -59,7 +59,6 @@ html_doc.search("tr").each do |element|
 
   pokemon.save!
   puts "#{pokemon.name} has been created !"
-  # e = element.children[1].text
   i += 1
   break if i == 151
 end

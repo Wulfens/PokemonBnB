@@ -4,9 +4,9 @@ class Pokemon < ApplicationRecord
   belongs_to :user
   has_many :bookings
 
+  validates :name, :types, presence: true
 
-  validates :name, presence: true
-  validates :price_per_day, numericality: { only_integer: true }
+  validates :price_per_day, numericality: { only_float: true }
 
   before_validation :shift_types
 
