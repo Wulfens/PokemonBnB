@@ -34,6 +34,7 @@ html_file = URI.open(url).read
 html_doc = Nokogiri::HTML(html_file)
 i = 0
 e = ""
+
 html_doc.search("tr").each do |element|
   next if element.children[1].name == "th"
 
