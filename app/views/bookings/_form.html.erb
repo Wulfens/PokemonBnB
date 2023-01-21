@@ -1,7 +1,7 @@
 <div class="container">
-  <%= simple_form_for([@pokemon, @booking], data: { controller: "flatpickr"} ) do |f| %>
-    <%= f.input :start_date, as: :string, input_html: { data: { flatpickr_target: 'startInput' } } %>
-    <%= f.input :end_date, as: :string, input_html: { data: { flatpickr_target: 'endInput' } }  %>
+  <%= simple_form_for([@pokemon, @booking], data: { controller: "flatpickr", flatpickr_dates_value: @pokemon.flatpickr_booked_dates_object } ) do |f| %>
+    <%= f.input :start_date, label: false, as: :string, input_html: { class: "d-none", data: { flatpickr_target: 'startInput' } } %>
+    <%# <%= f.input :end_date, label: false, as: :string, input_html: { class: "d-none", data: { flatpickr_target: 'endInput' } }  %>
     <%= f.submit 'Book now!', class: 'btn btn-primary' %>
   <% end %>
 </div>
