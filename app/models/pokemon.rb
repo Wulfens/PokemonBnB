@@ -1,4 +1,5 @@
 class Pokemon < ApplicationRecord
+  include PokemonConcern
   TYPES = %w[acier combat dragon eau électrik feu fée glace insecte normal plante poison psy roche sol spectre ténèbres vol]
 
   belongs_to :user
