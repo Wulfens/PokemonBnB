@@ -57,7 +57,7 @@ html_doc.search("tr").each do |element|
 
   pokemon.types = types
   pokemon.user = User.all.sample
-
+  p pokemon.types
   pokemon.save!
   puts "#{pokemon.name} has been created !"
   i += 1
