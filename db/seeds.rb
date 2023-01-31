@@ -26,38 +26,35 @@ User.create!(
   password: "123456"
 )
 
-all_types = %w[acier combat dragon eau électrik feu fée glace insecte normal plante poison psy roche sol spectre ténèbres vol]
+# all_types = %w[acier combat dragon eau electrik feu fee glace insecte normal plante poison psy roche sol spectre tenebres vol]
 
 url = "https://eternia.fr/fr/pokedex/liste-pokemon/"
 
-html_file = URI.open(url).read
+
+html_file = URI.parse(url).open
 html_doc = Nokogiri::HTML(html_file)
 i = 0
-e = ""
-
 html_doc.search("tr").each do |element|
   next if element.children[1].name == "th"
 
-  name = element.children[5].children.first.text
+  name = element.search('td > a').text
   next if name.match?(/\bméga/i) || name.match?(/alola\b/i)
 
   pokemon = Pokemon.new(name: name, price_per_day: rand(50))
-  types = []
-  element.search('span').each do |e|
-    types << e.attributes.values.first.value if all_types.include?(e.attributes.values.first.value)
-  end
-  href_poster = element.children[5].children.first.attribute('href').value
+  types = element.search('span').map { |type| Pokemon::TYPES.include?(type.text) ? type.text : "" }
+
+  href_poster = element.search('td > a').attribute('href').value
   url_poster = "https://eternia.fr#{href_poster}"
-  poster_file = URI.open(url_poster).read
-  poster_doc = Nokogiri::HTML(poster_file)
-
-  poster_doc.search('.artwork_off > img').each do |i|
-    pokemon.poster_url = "https://eternia.fr#{i.attributes.values.first.value}"
+  begin
+    poster_file = URI.parse(url_poster).open
+    poster_doc = Nokogiri::HTML(poster_file)
+    image_src = poster_doc.search('.artwork_off > img').attribute('src').value
+    pokemon.poster_url = "https://eternia.fr#{image_src}"
+  rescue OpenURI::HTTPError => e
+    e.message
   end
-
   pokemon.types = types
   pokemon.user = User.all.sample
-
   pokemon.save!
   puts "#{pokemon.name} has been created !"
   i += 1

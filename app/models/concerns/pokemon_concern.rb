@@ -1,7 +1,9 @@
 module PokemonConcern
   def booked_dates
     # renvoie un array d'array des dates de debut et de fin de tous les bookings du pokemon
-    bookings.pluck(:start_date, :start_date)
+    bookings.pluck(:start_date, :end_date)
+    # Renvoie un array avec pour une date unique
+    # bookings.pluck(:start_date, :start_date)
   end
 
   def simple_format_booked_dates
