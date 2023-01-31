@@ -17,7 +17,7 @@ export default class extends Controller {
 
   #initFlatPickr() {
     flatpickr(this.startInputTarget, this.#options());
-    }
+  }
 
   #options() {
     return {

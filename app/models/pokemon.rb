@@ -1,6 +1,7 @@
 class Pokemon < ApplicationRecord
   include PokemonConcern
-  TYPES = %w[acier combat dragon eau electrik feu fée glace insecte normal plante poison psy roche sol spectre ténèbres vol]
+  TYPES = %w[acier combat dragon eau electrik feu fee glace
+             insecte normal plante poison psy roche sol spectre tenebres vol]
 
   belongs_to :user
   has_many :bookings
