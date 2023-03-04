@@ -10,5 +10,8 @@ application.register("flatpickr", FlatpickrController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import LoadImageController from "./load_image_controller"
+application.register("load-image", LoadImageController)
+
 import TomSelectController from "./tom_select_controller"
 application.register("tom-select", TomSelectController)
