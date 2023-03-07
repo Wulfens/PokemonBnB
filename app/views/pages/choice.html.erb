@@ -1,0 +1,5 @@
+
+<%= simple_form_for(current_user, url: filter_user_path(id: current_user.id)) do |f| %>
+    <%= f.input :pokemons, collection: @pokemons, as: :check_boxes %>
+  <%= f.submit %>
+<% end %>
