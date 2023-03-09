@@ -30,6 +30,7 @@ gem "jbuilder"
 gem "devise"
 gem "pundit"
 gem "cloudinary"
+gem "geocoder"
 
 
 # Use Redis adapter to run Action Cable in production

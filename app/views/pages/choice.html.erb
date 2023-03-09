@@ -1,6 +1,10 @@
 
 <%= simple_form_for(current_user, url: filter_user_path(id: current_user.id)) do |f| %>
-    <%= f.input :pokemons, collection: @pokemons, as: :check_boxes, 
-    label_method: lambda { |b| image_tag(b.poster_url) }  %>
+    <%= f.input :pokemons, collection: @pokemons, as: :check_boxes,
+                                                  collection_wrapper_tag: 'div',
+                                                  collection_wrapper_class: 'category-wrapper',
+                                                  item_wrapper_class: 'category-item',
+                                                  input_html: {class: 'category-selector'},
+                                                  label_method: lambda { |b| image_tag(b.poster_url) }  %>
   <%= f.submit %>
 <% end %>
