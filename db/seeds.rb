@@ -26,6 +26,8 @@ User.create!(
   password: "123456"
 )
 
+addresses = ["12 rue de la croix de bois, Boran sur Oise", "68 Avenue Parmentier, Paris", "30 rue victor Basch, Vincennes", "2 avenue de l'orangerie, Villers Saint Paul", "6 Rue de la planchette, Gouvieux", "16 Villa Gaudelet, Paris"]
+
 # all_types = %w[acier combat dragon eau electrik feu fee glace insecte normal plante poison psy roche sol spectre tenebres vol]
 
 url = "https://eternia.fr/fr/pokedex/liste-pokemon/"
@@ -40,7 +42,7 @@ html_doc.search("tr").each do |element|
   name = element.search('td > a').text
   next if name.match?(/\bméga/i) || name.match?(/alola\b/i)
 
-  pokemon = Pokemon.new(name: name, price_per_day: rand(50))
+  pokemon = Pokemon.new(name: name, price_per_day: rand(50), address: addresses.sample)
   types = element.search('span').map { |type| Pokemon::TYPES.include?(type.text) ? type.text : "" }
 
   href_poster = element.search('td > a').attribute('href').value

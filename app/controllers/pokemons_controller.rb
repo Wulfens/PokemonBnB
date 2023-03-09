@@ -2,6 +2,12 @@ class PokemonsController < ApplicationController
   before_action :set_pokemon, only: %i[show edit update destroy]
   def index
     @pokemons = policy_scope(Pokemon)
+    @markers = @pokemons.geocoded.map do |flat|
+      {
+        lat: flat.latitude,
+        lng: flat.longitude
+      }
+    end
   end
 
   def show
