@@ -3,8 +3,9 @@
     <%= f.input :name %>
     <%= f.input :types, collection: Pokemon::TYPES, input_html: {multiple: true, data: {controller: "tom-select", tom_select_options_value: {tags: true, plugins: ['remove_button']}}} %>
     <%= f.input :poster_url %>
+
+    <%# Image tag get filled by the controller load-image %>
     <%= image_tag "", data: {load_image_target: "image" } %>
-    <%# <img class="img-wrapper" src="" data-load-image-target="image"> %>
     <%= f.input :photo, as: :file, input_html: { data: { action: 'change->load-image#displayImage' } } %>
     <%= f.input :price_per_day %>
     <%= f.submit %>

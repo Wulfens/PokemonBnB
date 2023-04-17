@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   get "/choice", to: "pages#choice"
 
+  # Routes optionnelles
   resources :users, only: [] do
     member do
       patch :filter
