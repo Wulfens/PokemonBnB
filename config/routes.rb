@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   get "/choice", to: "pages#choice"
 
-  resources :users, only: [] do 
+  resources :users, only: [] do
     member do
       patch :filter
     end
