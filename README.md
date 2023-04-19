@@ -4,3 +4,4 @@ Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/ra
 TODO:
 
 Make sql request with scope
+Delete routes with users
