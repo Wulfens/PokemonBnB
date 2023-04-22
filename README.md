@@ -5,4 +5,3 @@ TODO:
 
 Make sql request with scope
 Delete routes with users
-Commentaire de la triche
