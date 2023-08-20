@@ -1,3 +1,2 @@
-REfaire le front
+Refaire le front
 Faire le figma
-Truc muche
