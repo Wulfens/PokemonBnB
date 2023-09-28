@@ -6,6 +6,8 @@ import rangePlugin from "flatpickr/dist/plugins/rangePlugin";
 // Connects to data-controller="flatpickr"
 export default class extends Controller {
   static targets = [ 'startInput', 'endInput' ]
+
+  // For one date bookings
   // static targets = [ 'startInput' ]
 
   static values = { dates: Object }
@@ -28,6 +30,8 @@ export default class extends Controller {
     mode: 'range',
       "plugins": [new rangePlugin({ input: this.endInputTarget})]
     }
+
+
     // return {
     //   ...this.#parsedBookedDates(),
     //   inline: true,
