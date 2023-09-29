@@ -2,6 +2,8 @@ class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :pokemon
 
+
+  # Scope are called on the Class
   scope :pending, -> { where(status: "pending") }
   scope :accepted, -> { where(status: "accepted") }
   scope :declined, -> { where(status: "declined") }
@@ -15,3 +17,4 @@ class Booking < ApplicationRecord
     self.status = "pending"
   end
 end
+
