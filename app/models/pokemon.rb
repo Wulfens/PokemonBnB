@@ -3,6 +3,7 @@ class Pokemon < ApplicationRecord
   TYPES = %w[acier combat dragon eau electrik feu fee glace
              insecte normal plante poison psy roche sol spectre tenebres vol]
 
+  # association are called on the instance
   belongs_to :user
   has_many :bookings
   has_one_attached :photo
