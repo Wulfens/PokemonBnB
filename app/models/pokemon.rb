@@ -12,6 +12,7 @@ class Pokemon < ApplicationRecord
 
   validates :price_per_day, numericality: { only_float: true }
 
+# This is a callback, wich is called before the validation on the database
   before_validation :shift_types
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
