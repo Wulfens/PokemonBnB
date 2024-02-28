@@ -3,7 +3,6 @@ class Pokemon < ApplicationRecord
   TYPES = %w[acier combat dragon eau electrik feu fee glace
              insecte normal plante poison psy roche sol spectre tenebres vol]
 
-  # association are called on the instance
   belongs_to :user
   has_many :bookings
   has_one_attached :photo
@@ -12,10 +11,9 @@ class Pokemon < ApplicationRecord
 
   validates :price_per_day, numericality: { only_float: true }
 
-# This is a callback, wich is called before the validation on the database
   before_validation :shift_types
-  geocoded_by :address
-  after_validation :geocode, if: :will_save_change_to_address?
+
+  # TODO scope with SQL request
 
   private
 

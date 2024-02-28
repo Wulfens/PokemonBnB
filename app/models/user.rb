@@ -8,7 +8,4 @@ class User < ApplicationRecord
   has_many :bookings
 
   has_many :requested_bookings, through: :pokemons, source: :bookings
-
-  # See delegate
-  # And Lambdas
 end

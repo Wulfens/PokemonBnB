@@ -13,6 +13,13 @@ class BookingsController < ApplicationController
     end
   end
 
+  def accept
+    @booking = Booking.f
+    if @booking.accept!
+      redirect_to 
+    end
+  end
+
   private
 
   def booking_params

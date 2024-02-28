@@ -2,7 +2,7 @@ class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :pokemon
 
-
+  enum :status
   # Scope are called on the Class
   scope :pending, -> { where(status: "pending") }
   scope :accepted, -> { where(status: "accepted") }
