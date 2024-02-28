@@ -11,7 +11,11 @@ Rails.application.routes.draw do
     resources :bookings, only: :create
   end
 
-  resources :bookings, only: :destroy
+  resources :bookings, only: :destroy do
+    member do
+      patch :accept
+    end
+  end
 
   get "/dashboard", to: "pages#dashboard"
 
